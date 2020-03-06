@@ -9,6 +9,7 @@
   "scripts": {
     "clean": "sh scripts/clean.sh",
     "build": "sh scripts/build.sh",
+    "upload": "sh scripts/upload.sh",
     "test": "jest"
   },
   "engines": {
