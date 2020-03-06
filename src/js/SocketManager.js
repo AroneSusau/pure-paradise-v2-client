@@ -1,10 +1,10 @@
 module.exports = class SocketManager {
 
-    constructor(io) {
+    constructor(io, stage) {
         const prod = "https://socket.ppv2.aronesusau.com"
         const dev = "http://localhost:3000"
 
-        this.socket = io(dev || prod)
+        this.socket = io(stage === "production" ? prod : dev)
     }
 
     setTerminal(terminal) {

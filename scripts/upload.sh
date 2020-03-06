@@ -1,11 +1,14 @@
 #! /bin/bash
 
+# Create latest build
+npm run build production
+
 # Upload distribution to s3
-aws s3 cp dist/bundle.js  s3://aronesusau
-aws s3 cp dist/favicon.ico  s3://aronesusau
-aws s3 cp dist/index.css  s3://aronesusau
-aws s3 cp dist/index.html  s3://aronesusau
-aws s3 cp dist/title.png  s3://aronesusau
+aws s3 cp dist/bundle.js  s3://pure-paradise-v2
+aws s3 cp dist/favicon.ico  s3://pure-paradise-v2
+aws s3 cp dist/index.css  s3://pure-paradise-v2
+aws s3 cp dist/index.html  s3://pure-paradise-v2
+aws s3 cp dist/title.png  s3://pure-paradise-v2
 
 # Invalidate CloudFront caches
 aws cloudfront create-invalidation \

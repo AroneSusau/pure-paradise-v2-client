@@ -4,7 +4,9 @@ const GameDataManager = require("./GameDataManager.js")
 const UIManager = require("./UIManager.js")
 const Terminal = require("./Terminal.js")
 
-const socketManager = new SocketManager(io)
+const env = process.env.STAGE
+
+const socketManager = new SocketManager(io, env)
 const gameDataManager = new GameDataManager()
 const uiManager = new UIManager()
 const term = new Terminal()
