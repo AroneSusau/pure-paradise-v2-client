@@ -7,13 +7,14 @@
     "doc": "docs"
   },
   "scripts": {
+    "start": "serve ./dist/",
     "clean": "sh scripts/clean.sh",
     "build": "sh scripts/build.sh",
     "upload": "sh scripts/upload.sh",
     "test": "jest"
   },
   "engines": {
-    "node": "13.2.0"
+    "node": "12.16.1"
   },
   "repository": {
     "type": "git",
@@ -32,12 +33,14 @@
   },
   "homepage": "https://github.com/AroneSusau/pure-paradise-v2#readme",
   "dependencies": {
+    "ajv": "6.9.1",
     "socket.io-client": "latest"
   },
   "devDependencies": {
     "@types/jest": "25.1.2",
     "@types/socket.io-client": "1.4.32",
-    "envify": "^4.1.0",
-    "webpack": "^4.42.0"
+    "envify": "4.1.0",
+    "serve": "11.3.0",
+    "webpack": "4.42.0"
   }
 }
