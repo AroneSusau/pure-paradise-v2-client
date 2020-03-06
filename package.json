@@ -7,8 +7,6 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "sh scripts/start.sh",
-    "local": "sh scripts/local-launch.sh",
     "clean": "sh scripts/clean.sh",
     "build": "sh scripts/build.sh",
     "test": "jest"
@@ -38,6 +36,6 @@
   "devDependencies": {
     "@types/jest": "25.1.2",
     "@types/socket.io-client": "1.4.32",
-    "typescript": "^3.7.5"
+    "webpack": "^4.42.0"
   }
 }

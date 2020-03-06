@@ -1,7 +1,10 @@
 module.exports = class SocketManager {
 
     constructor(io) {
-        this.socket = io("https://socket.ppv2.aronesusau.com")
+        const prod = "https://socket.ppv2.aronesusau.com"
+        const dev = "http://localhost:3000"
+
+        this.socket = io(dev || prod)
     }
 
     setTerminal(terminal) {
