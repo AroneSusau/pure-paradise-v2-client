@@ -1,5 +1,6 @@
 #! /bin/bash
 
+# Set stage variable for socket address.
 STAGE=$1
 
 if [ -z "$STAGE" ]
@@ -10,6 +11,7 @@ fi
 # Remove previous build.
 npm -s run clean
 
+# Build project.
 echo 'Building project..\n'
 
 mkdir ./dist
