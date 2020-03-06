@@ -1,0 +1,43 @@
+{
+  "name": "pure-paradise-v2",
+  "version": "0.0.1",
+  "description": "A text based RPG video game, originally created for a university assignment in Java, ported to Javascript / TypeScript",
+  "main": "src/public/js/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "sh scripts/start.sh",
+    "local": "sh scripts/local-launch.sh",
+    "clean": "sh scripts/clean.sh",
+    "build": "sh scripts/build.sh",
+    "test": "jest"
+  },
+  "engines": {
+    "node": "13.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AroneSusau/pure-paradise-v2.git"
+  },
+  "keywords": [
+    "RPG",
+    "game",
+    "assignment",
+    "learning"
+  ],
+  "author": "Arone Tie Susau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AroneSusau/pure-paradise-v2/issues"
+  },
+  "homepage": "https://github.com/AroneSusau/pure-paradise-v2#readme",
+  "dependencies": {
+    "socket.io-client": "latest"
+  },
+  "devDependencies": {
+    "@types/jest": "25.1.2",
+    "@types/socket.io-client": "1.4.32",
+    "typescript": "^3.7.5"
+  }
+}
