@@ -1,4 +1,4 @@
-const MapParser = require("./MapParser.js")
+const MapParser = require('../types/MapParser.js')
 const mapParser = new MapParser()
 
 module.exports = class UIManager {
@@ -11,7 +11,7 @@ module.exports = class UIManager {
     }
 
     createMap() {
-        const map = document.getElementById("map")
+        const map = document.getElementById('map')
         const frag = document.createDocumentFragment()
 
         for (let i = 0; i < this.length; i++) {
@@ -19,7 +19,7 @@ module.exports = class UIManager {
             const text = document.createTextNode(this.parsed[i])
 
             if (i % 20 === 0)
-                frag.appendChild(document.createElement("br"))
+                frag.appendChild(document.createElement('br'))
 
             span.id = `node${i}`
 
@@ -31,7 +31,7 @@ module.exports = class UIManager {
     }
 
     startFrame(gameDataManager) {
-        setInterval(() => this.updateFrame(gameDataManager), this.fps);
+        setInterval(() => this.updateFrame(gameDataManager), this.fps)
     }
 
     updateFrame(gameDataManager) {
@@ -74,7 +74,7 @@ module.exports = class UIManager {
                 span.className = ''
             }
 
-            if (span.textContent === "??") {
+            if (span.textContent === '??') {
                 span.className = 'objective'
             }
         }

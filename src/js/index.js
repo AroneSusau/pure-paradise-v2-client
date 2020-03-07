@@ -1,31 +1,29 @@
-const io = require("socket.io-client")
-const SocketManager = require("./SocketManager.js")
-const GameDataManager = require("./GameDataManager.js")
-const UIManager = require("./UIManager.js")
-const Terminal = require("./Terminal.js")
+const io = require('socket.io-client')
+const SocketManager = require('./managers/SocketManager.js')
+const GameDataManager = require('./managers/GameDataManager.js')
+const UIManager = require('./managers/UIManager.js')
+const Terminal = require('./types/Terminal.js')
 
-const env = process.env.STAGE
-
-const socketManager = new SocketManager(io, env)
+const socketManager = new SocketManager(io)
 const gameDataManager = new GameDataManager()
 const uiManager = new UIManager()
 const term = new Terminal()
 
 let gameStarted = false
 
-term.echo("Arone Susau 2020 - www.aronesusau.com", "terminal-main")
-term.echo("Please enter your characters name..", "terminal-main")
+term.echo('Arone Susau 2020 - www.aronesusau.com', 'terminal-main')
+term.echo('Please enter your characters name..', 'terminal-main')
 
 window.onload = _ => {
-    const terminalContainer = document.getElementById("terminal-container")
-    const input = document.getElementById("input")
+    const terminalContainer = document.getElementById('terminal-container')
+    const input = document.getElementById('input')
 
-    input.focus();
-    input.select();
+    input.focus()
+    input.select()
 
     terminalContainer.onclick = () => {
-        input.focus();
-        input.select();
+        input.focus()
+        input.select()
     }
 
     term.command(cmd => {
@@ -40,17 +38,17 @@ window.onload = _ => {
         }
 
         if (gameStarted) {
-            const cmdSplit = cmd.split(" ")
+            const cmdSplit = cmd.split(' ')
             const action = cmdSplit[0]
             cmdSplit.shift()
-            const content = cmdSplit.join(" ")
+            const content = cmdSplit.join(' ')
 
             switch (action) {
-                case "/chat":
-                    term.echo(`You: ${content}`, "client-terminal-chat")
-                    socketManager.socket.emit("room:chat", content)
+                case '/chat':
+                    term.echo(`You: ${content}`, 'client-terminal-chat')
+                    socketManager.socket.emit('room:chat', content)
                     break
-                case "/debug":
+                case '/debug':
                     debug(gameDataManager)
                     break
                 default:

@@ -1,10 +1,10 @@
 module.exports = class SocketManager {
 
-    constructor(io, stage) {
-        const prod = "https://socket.ppv2.aronesusau.com"
-        const dev = "http://localhost:3000"
+    constructor(io) {
+        const prod = 'https://socket.ppv2.aronesusau.com'
+        const dev = 'http://localhost:3000'
 
-        this.socket = io(stage === "production" ? prod : dev)
+        this.socket = io(ENVIRONMENT === 'production' ? prod : dev)
     }
 
     setTerminal(terminal) {
@@ -55,7 +55,7 @@ module.exports = class SocketManager {
                 gameDataManager.deletePlayer(player.id)
             })
         })
-        this.terminal.echo(response.message, "")
+        this.terminal.echo(response.message, '')
     }
 
     mapUpdate(response, gameDataManager, uiManager) {
@@ -68,7 +68,7 @@ module.exports = class SocketManager {
             players.forEach(player =>
                 gameDataManager.setPlayer(player))
         })
-        this.terminal.echo(response.message, "")
+        this.terminal.echo(response.message, '')
     }
 
     playerUpdate(response, gameDataManager) {
@@ -80,19 +80,19 @@ module.exports = class SocketManager {
 
         if (players && players.length > 0) {
             callback(players)
-        } else console.warn("Players field is empty or undefined.")
+        } else console.warn('Players field is empty or undefined.')
     }
 
     battleUpdate() {
-        console.log("battleUpdate")
+        console.log('battleUpdate')
     }
 
     eventUpdate() {
-        console.log("eventUpdate")
+        console.log('eventUpdate')
     }
 
     contextUpdate() {
-        console.log("contextUpdate")
+        console.log('contextUpdate')
     }
 
     generalUpdate(response, gameDataManager) {
@@ -100,11 +100,11 @@ module.exports = class SocketManager {
     }
 
     chat(response, gameDataManager) {
-        this.terminal.echo(response.message, "external-terminal-chat")
+        this.terminal.echo(response.message, 'external-terminal-chat')
     }
 
     error(response, gameDataManager) {
-        this.terminal.echo(response.error.message, "terminal-error")
+        this.terminal.echo(response.error.message, 'terminal-error')
     }
 
 }

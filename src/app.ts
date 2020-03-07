@@ -1,0 +1,5 @@
+require('./js/index.js')
+require('./favicon.ico')
+require('./images/title.png')
+require('./css/index.css')
+require('./index.html')

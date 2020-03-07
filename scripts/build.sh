@@ -3,28 +3,15 @@
 # Set stage variable for socket address.
 STAGE=$1
 
-if [ -z "$STAGE" ]
-  then
-    STAGE="dev"
+if [ -z "$STAGE" ]; then
+  STAGE="development"
 fi
 
 # Remove previous build.
 npm -s run clean
 
-# Build project.
-echo 'Building project..\n'
+echo "Starting build phase"
 
-mkdir ./dist
+webpack --env.NODE_ENV=$STAGE
 
-cd src || exit
-
-echo 'Copying Additional Files..\n'
-
-# Copy css, html and other relevant files that dont require tsc parsing.
-cp $(find . \( -name '*.css' -or -name '*.html' -or -name '*.ico' -or -name '*.png' \)) ../dist/
-
-cd ..
-
-browserify ./src/js/index.js -t [ envify --DEBUG app:* --STAGE $STAGE ] | minify >./dist/bundle.js
-
-echo 'Build Complete\n'
+echo "Build Complete\n"

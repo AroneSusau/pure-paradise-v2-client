@@ -1,4 +1,4 @@
-const Player = require("./Player.js")
+const Player = require('../types/Player.js')
 
 module.exports = class GameDataManager {
 
@@ -24,10 +24,14 @@ module.exports = class GameDataManager {
             3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
             3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
             3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-            3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+            3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3
         ]
         this.local = null
         this.global = null
+    }
+
+    get players() {
+        return this._players
     }
 
     setClient(coords) {
@@ -71,10 +75,6 @@ module.exports = class GameDataManager {
                 }
             }
         } else console.warn(`Player object passed in was invalid.`)
-    }
-
-    get players() {
-        return this._players;
     }
 
     getLength() {

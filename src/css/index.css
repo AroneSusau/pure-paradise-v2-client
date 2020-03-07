@@ -12,6 +12,17 @@ body {
     display: flex;
 }
 
+label {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
 .wrapper {
     width: 90%;
     height: 90%;
@@ -52,7 +63,7 @@ body {
     height: 90%;
 }
 
-#terminal >:first-child {
+#terminal > :first-child {
     margin-top: auto;
 }
 
@@ -85,7 +96,6 @@ body {
     font-weight: bold;
     text-shadow: 0 0 5px #7f151c;
 }
-
 
 
 /* Input */

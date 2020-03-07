@@ -5,8 +5,8 @@ module.exports = class Terminal {
     }
 
     echo(text, classes) {
-        const terminal = document.getElementById("terminal")
-        const div = document.createElement("div")
+        const terminal = document.getElementById('terminal')
+        const div = document.createElement('div')
 
         div.className = `terminal-text`
         div.innerHTML = `<span class="console-input">>>> </span><span class="terminal-span ${classes}">${text}</span>`
@@ -17,11 +17,11 @@ module.exports = class Terminal {
 
     command(callback) {
         window.onkeydown = e => {
-            const cmd = document.querySelector("input")
+            const cmd = document.querySelector('input')
 
-            if (cmd.value !== "" && e.key === "Enter") {
+            if (cmd.value !== '' && e.key === 'Enter') {
                 callback(cmd.value)
-                cmd.value = ""
+                cmd.value = ''
             }
         }
     }
