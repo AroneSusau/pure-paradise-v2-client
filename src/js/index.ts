@@ -1,8 +1,8 @@
 const io = require('socket.io-client')
-const SocketManager = require('./managers/SocketManager.js')
-const GameDataManager = require('./managers/GameDataManager.js')
-const UIManager = require('./managers/UIManager.js')
-const Terminal = require('./types/Terminal.js')
+import {GameDataManager} from './managers/GameDataManager'
+import {SocketManager} from './managers/SocketManager'
+import {UIManager} from './managers/UIManager'
+import {Terminal} from './managers/Terminal.js'
 
 const socketManager = new SocketManager(io)
 const gameDataManager = new GameDataManager()
@@ -14,9 +14,9 @@ let gameStarted = false
 term.echo('Arone Susau 2020 - www.aronesusau.com', 'terminal-main')
 term.echo('Please enter your characters name..', 'terminal-main')
 
-window.onload = _ => {
-    const terminalContainer = document.getElementById('terminal-container')
-    const input = document.getElementById('input')
+window.onload = (e: KeyboardEvent) => {
+    const terminalContainer: HTMLElement = document.getElementById('terminal-container')
+    const input: HTMLInputElement = document.querySelector('input')
 
     input.focus()
     input.select()
@@ -26,7 +26,7 @@ window.onload = _ => {
         input.select()
     }
 
-    term.command(cmd => {
+    term.command((cmd: string) => {
         if (!gameStarted) {
             socketManager.setTerminal(term)
             socketManager.start(cmd)
@@ -60,7 +60,7 @@ window.onload = _ => {
     })
 }
 
-function debug(gameDataManager) {
+function debug(gameDataManager: GameDataManager) {
     console.dir(gameDataManager)
 }
 

@@ -1,4 +1,6 @@
-module.exports = class MapParser {
+export class MapParser {
+
+    private key: Map<number, string>
 
     constructor() {
         this.key = new Map()
@@ -32,7 +34,7 @@ module.exports = class MapParser {
         this.key.set(90, 'PP')
     }
 
-    parse(raw) {
+    parse(raw: Array<number>): Array<string> {
         return raw.map(value => {
             return this.key.get(value)
         })

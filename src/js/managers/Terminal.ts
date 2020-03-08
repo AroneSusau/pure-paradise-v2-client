@@ -1,10 +1,10 @@
-module.exports = class Terminal {
+export class Terminal {
 
     start() {
 
     }
 
-    echo(text, classes) {
+    echo(text: string, classes: string): void {
         const terminal = document.getElementById('terminal')
         const div = document.createElement('div')
 
@@ -15,8 +15,8 @@ module.exports = class Terminal {
         terminal.scrollTop = terminal.scrollHeight
     }
 
-    command(callback) {
-        window.onkeydown = e => {
+    command(callback: (cmd: string) => void): void {
+        window.onkeydown = (e: KeyboardEvent) => {
             const cmd = document.querySelector('input')
 
             if (cmd.value !== '' && e.key === 'Enter') {

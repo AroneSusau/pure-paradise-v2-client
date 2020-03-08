@@ -1,16 +1,23 @@
-const MapParser = require('../types/MapParser.js')
+import {MapParser} from '../types/utils/MapParser.js'
+import {GameDataManager} from './GameDataManager'
+
 const mapParser = new MapParser()
 
-module.exports = class UIManager {
+export class UIManager {
 
-    setMap(raw) {
+    private raw: Array<number>
+    private parsed: Array<string>
+    private length: number
+    private fps: number
+    
+    setMap(raw: Array<number>): void {
         this.raw = raw
         this.parsed = mapParser.parse(raw)
         this.length = raw.length
         this.fps = 1000 / 30
     }
 
-    createMap() {
+    createMap(): void {
         const map = document.getElementById('map')
         const frag = document.createDocumentFragment()
 
@@ -30,33 +37,35 @@ module.exports = class UIManager {
         map.appendChild(frag)
     }
 
-    startFrame(gameDataManager) {
+    startFrame(gameDataManager: GameDataManager): void {
         setInterval(() => this.updateFrame(gameDataManager), this.fps)
     }
 
-    updateFrame(gameDataManager) {
+    updateFrame(gameDataManager: GameDataManager) {
         this.refreshMap()
         this.drawPlayersPositions(gameDataManager)
         this.drawClientsPosition(gameDataManager)
 
     }
 
-    drawClientsPosition(gameDataManager) {
-        const localExists = gameDataManager.local !== undefined && gameDataManager.local >= 0
+    drawClientsPosition(gameDataManager: GameDataManager): void {
+        const localExists = gameDataManager.localPlayer.location.local !== undefined && gameDataManager.localPlayer.location.local >= 0
 
         if (localExists) {
-            const span = document.getElementById(`node${gameDataManager.local}`)
+            const span = document.getElementById(`node${gameDataManager.localPlayer.location.local}`)
             span.removeChild(span.childNodes[0])
             span.appendChild(document.createTextNode('PP'))
             span.className = 'player'
         }
     }
 
-    drawPlayersPositions(gameDataManager) {
+    drawPlayersPositions(gameDataManager: GameDataManager): void {
         gameDataManager.players.forEach(player => {
-            const span = document.getElementById(`node${player.local}`)
+            const span = document.getElementById(`node${player.location.local}`)
 
-            if (span.textContent === this.parsed[player.local] && gameDataManager.global === player.global) {
+            if (span.textContent === this.parsed[player.location.local] &&
+                gameDataManager.localPlayer.location.global === player.location.global) {
+
                 span.removeChild(span.childNodes[0])
                 span.appendChild(document.createTextNode('PP'))
 
@@ -65,7 +74,7 @@ module.exports = class UIManager {
         })
     }
 
-    refreshMap() {
+    refreshMap(): void {
         for (let i = 0; i < this.length; i++) {
             const span = document.getElementById(`node${i}`)
             if (span.textContent !== this.parsed[i]) {
