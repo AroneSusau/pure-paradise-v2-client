@@ -1,5 +1,6 @@
-import {MapParser} from '../types/utils/MapParser.js'
+import {MapParser} from '../types/utils/MapParser'
 import {GameDataManager} from './GameDataManager'
+import {Context} from '../types/utils/Context'
 
 const mapParser = new MapParser()
 
@@ -49,7 +50,9 @@ export class UIManager {
     }
 
     drawClientsPosition(gameDataManager: GameDataManager): void {
-        const localExists = gameDataManager.localPlayer.location.local !== undefined && gameDataManager.localPlayer.location.local >= 0
+        const localExists = gameDataManager.localPlayer.location.local !== undefined &&
+            gameDataManager.localPlayer.location.local >= 0 &&
+            gameDataManager.localPlayer.context === Context.FREE_ROAM.toString()
 
         if (localExists) {
             const span = document.getElementById(`node${gameDataManager.localPlayer.location.local}`)
@@ -64,7 +67,8 @@ export class UIManager {
             const span = document.getElementById(`node${player.location.local}`)
 
             if (span.textContent === this.parsed[player.location.local] &&
-                gameDataManager.localPlayer.location.global === player.location.global) {
+                gameDataManager.localPlayer.location.global === player.location.global &&
+                player.context === Context.FREE_ROAM.toString()) {
 
                 span.removeChild(span.childNodes[0])
                 span.appendChild(document.createTextNode('PP'))

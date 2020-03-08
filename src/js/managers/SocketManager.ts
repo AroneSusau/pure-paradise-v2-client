@@ -1,10 +1,10 @@
-import {Terminal} from './Terminal.js'
+import {Terminal} from './Terminal'
 import {GameDataManager} from './GameDataManager'
 import {UIManager} from './UIManager'
-import {RoomUpdate} from '../types/updates/RoomUpdate.js'
-import {GameUpdate} from '../types/updates/GameUpdate.js'
-import {ErrorUpdate} from '../types/updates/ErrorUpdate.js'
-import {Player} from '../types/character/Player.js'
+import {RoomUpdate} from '../types/updates/RoomUpdate'
+import {GameUpdate} from '../types/updates/GameUpdate'
+import {ErrorUpdate} from '../types/updates/ErrorUpdate'
+import {Player} from '../types/character/Player'
 
 export class SocketManager {
 
@@ -116,12 +116,12 @@ export class SocketManager {
         console.log('battleUpdate')
     }
 
-    eventUpdate() {
-        console.log('eventUpdate')
+    eventUpdate(response: GameUpdate, gameDataManager: GameDataManager) {
+        this._terminal.echo(response.event.story, "")
     }
 
-    contextUpdate() {
-        console.log('contextUpdate')
+    contextUpdate(response: GameUpdate, gameDataManager: GameDataManager) {
+        gameDataManager.localPlayer.context = response.player.context.toString()
     }
 
     get socket(): SocketIOClient.Socket {

@@ -1,4 +1,4 @@
-import {Location} from "./Location.js"
+import {Location} from "./Location"
 
 export class Player {
 

@@ -1,16 +1,16 @@
-import {Context} from '../utils/Context.js'
-import {Item} from '../character/Item.js'
-import {Monster} from '../character/Monster.js'
-import {MapIds} from '../utils/MapIds.js'
+import {Context} from '../utils/Context'
+import {Item} from '../character/Item'
+import {Monster} from '../character/Monster'
+import {MapIds} from '../utils/MapIds'
 
 export type Flags = {
     [key: string]: boolean
+    generalUpdate: boolean,
     mapUpdate: boolean,
     playerUpdate: boolean,
     battleUpdate: boolean,
     eventUpdate: boolean,
     contextUpdate: boolean,
-    generalUpdate: boolean,
     error: boolean
 }
 

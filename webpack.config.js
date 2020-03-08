@@ -16,6 +16,7 @@ module.exports = env => {
     return {
         target: 'web',
         entry: './src/app.ts',
+        entry: './src/app.ts',
         devtool: 'hidden-source-map',
         resolve: {
             modules: ['node_modules'],

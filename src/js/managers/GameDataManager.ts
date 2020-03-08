@@ -1,5 +1,5 @@
-import {Player} from '../types/character/Player.js'
-import {PlayerInfo} from '../types/updates/GameUpdate.js'
+import {Player} from '../types/character/Player'
+import {PlayerInfo} from '../types/updates/GameUpdate'
 
 export class GameDataManager {
 
@@ -65,7 +65,7 @@ export class GameDataManager {
 
     updatePlayer(player: Player): void {
         this.validatePlayer(player)
-        if (this._players.has(player.id)) {
+        if (this._players.has(player.id) && player.context) {
             const otherPlayer = this._players.get(player.id)
             otherPlayer.location.local = player.location.local
             otherPlayer.location.global = player.location.global

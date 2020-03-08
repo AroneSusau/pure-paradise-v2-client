@@ -2,7 +2,7 @@ const io = require('socket.io-client')
 import {GameDataManager} from './managers/GameDataManager'
 import {SocketManager} from './managers/SocketManager'
 import {UIManager} from './managers/UIManager'
-import {Terminal} from './managers/Terminal.js'
+import {Terminal} from './managers/Terminal'
 
 const socketManager = new SocketManager(io)
 const gameDataManager = new GameDataManager()

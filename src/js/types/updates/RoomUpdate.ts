@@ -1,4 +1,4 @@
-import {Player} from '../character/Player.js'
+import {Player} from '../character/Player'
 
 export type RoomUpdate = {
     room?: string
