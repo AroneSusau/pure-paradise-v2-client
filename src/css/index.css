@@ -97,6 +97,11 @@ label {
     text-shadow: 0 0 5px #7f151c;
 }
 
+.event-notification {
+    color: peachpuff;
+    font-weight: bold;
+    text-shadow: 0 0 5px peachpuff;
+}
 
 /* Input */
 

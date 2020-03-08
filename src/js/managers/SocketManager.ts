@@ -89,7 +89,9 @@ export class SocketManager {
     }
 
     playerUpdate(response: GameUpdate, gameDataManager: GameDataManager) {
-        gameDataManager.setClient(response.id, response.room, response.player)
+        gameDataManager.localPlayer ?
+            gameDataManager.updateClient(response.id, response.room, response.player) :
+            gameDataManager.setClient(response.id, response.room, response.player)
     }
 
     validatePlayersField(response: RoomUpdate, callback: (player: Array<Player>) => void) {
@@ -117,7 +119,15 @@ export class SocketManager {
     }
 
     eventUpdate(response: GameUpdate, gameDataManager: GameDataManager) {
+
+        if (response.general) {
+            this._terminal.echo(response.general.text, "event-notification")
+        }
+
         this._terminal.echo(response.event.story, "")
+
+        gameDataManager.setClient(response.id, response.room, response.player)
+
     }
 
     contextUpdate(response: GameUpdate, gameDataManager: GameDataManager) {

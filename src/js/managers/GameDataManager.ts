@@ -48,6 +48,12 @@ export class GameDataManager {
             player.context.toString())
     }
 
+    updateClient(id: string, room: string, player: PlayerInfo): void {
+        this._localPlayer.location.local = player.coords.local
+        this._localPlayer.location.global = player.coords.global
+        this._localPlayer.context = player.context.toString()
+    }
+
     setPlayer(player: Player): void {
         this.validatePlayer(player)
         if (!this._players.has(player.id)) {
