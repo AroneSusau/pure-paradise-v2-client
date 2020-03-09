@@ -39,6 +39,7 @@ export class SocketManager {
         this._socket.on('room:chat', (response: RoomUpdate) => this.chat(response, gameDataManager))
 
         this._socket.on('error:invalid', (response: ErrorUpdate) => this.error(response, gameDataManager))
+        this._socket.on('error:event:requirements', (response: ErrorUpdate) => this.error(response, gameDataManager))
         this._socket.on('error:full', (response: ErrorUpdate) => this.error(response, gameDataManager))
     }
 
