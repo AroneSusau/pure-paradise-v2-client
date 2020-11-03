@@ -14,7 +14,7 @@ export class SocketManager {
     private _terminal: Terminal
 
     constructor(io: SocketIOClientStatic) {
-        const prod = 'https://socket.ppv2.aronesusau.com'
+        const prod = 'https://pure-paradise-v2.herokuapp.com'
         const dev = 'http://localhost:3000'
 
         // @ts-ignore

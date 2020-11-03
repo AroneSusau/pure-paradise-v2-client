@@ -60,7 +60,7 @@ window.onload = (e: KeyboardEvent) => {
     })
 }
 
-function debug(gameDataManager: GameDataManager) {
-    console.dir(gameDataManager)
+function debug(gdm: GameDataManager) {
+    console.dir(gdm)
 }
 

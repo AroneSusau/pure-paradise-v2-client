@@ -1,0 +1,32 @@
+version: 2.1
+
+jobs:
+  test-only:
+    docker: 
+      - image: circleci/node:14.8.0
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+  test-and-deploy:
+    docker: 
+      - image: circleci/node:14.8.0
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+      - run: npm run build
+      - run: npm run upload
+      
+workflows:
+  pure-paradise-server:
+    jobs:
+      - test-only:
+          filters:
+            branches:
+              ignore: master 
+      - test-and-deploy:
+          filters:
+            branches:
+              only: master
+    
