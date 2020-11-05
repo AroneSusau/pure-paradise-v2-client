@@ -21,7 +21,7 @@ jobs:
       - run: npm run upload
       
 workflows:
-  pure-paradise-server:
+  pure-paradise-client:
     jobs:
       - test-only:
           filters:
