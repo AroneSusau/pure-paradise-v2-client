@@ -4,31 +4,31 @@ orbs:
 
 jobs:
   test-only:
-    docker: 
+    docker:
       - image: circleci/node:14.8.0
     steps:
       - checkout
       - run: npm install
       - run: npm test
   test-and-deploy:
-    docker: 
+    docker:
       - image: circleci/node:14.8.0
     steps:
       - checkout
       - aws-cli/setup
       - run: npm install
       - run: npm test
+      - run: npm run build production
       - run: npm run upload
-      
+
 workflows:
   pure-paradise-client:
     jobs:
       - test-only:
           filters:
             branches:
-              ignore: master 
+              ignore: master
       - test-and-deploy:
           filters:
             branches:
               only: master
-    
