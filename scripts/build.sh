@@ -12,6 +12,6 @@ npm -s run clean
 
 echo "Starting build phase"
 
-webpack --env.NODE_ENV=$STAGE
+vue-cli-service build --mode $STAGE
 
 echo "Build Complete\n"
