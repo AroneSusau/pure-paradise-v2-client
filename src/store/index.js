@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import Menu from "./../enums/constants.js";
-import types from "./../enums/types.js";
+import Menu from "./../consts/constants.js";
+import types from "./../consts/types.js";
 
 import mapper from "../utils/mapper.js";
 
@@ -12,6 +12,7 @@ export default new Vuex.Store({
   state: {
     menu: Menu.HOME,
     messages: [],
+    started: false,
     map: [],
     player: {
       position: 0
@@ -22,8 +23,14 @@ export default new Vuex.Store({
     [types.menu.home](state) {
       state.menu = Menu.HOME;
     },
-    [types.menu.inventory](state) {
-      state.menu = Menu.INVENTORY;
+    [types.started](state) {
+      state.started = state;
+    },
+    [types.menu.about](state) {
+      state.menu = Menu.about;
+    },
+    [types.menu.help](state) {
+      state.menu = Menu.help;
     },
     [types.messages.post](state, payload) {
       if (payload.timestamp && payload.content) {
@@ -40,17 +47,20 @@ export default new Vuex.Store({
     },
     [types.player.position](state, payload) {
       state.player.position = payload;
-    },
-    ["count"](state) {
-      state.count = state.count >= 99 ? 0 : state.count + 5;
     }
   },
   actions: {
     [types.menu.home](context) {
       context.commit(types.menu.home);
     },
-    [types.menu.inventory](context) {
-      context.commit(types.menu.inventory);
+    [types.started](context) {
+      context.commit(types.started);
+    },
+    [types.menu.help](context) {
+      context.commit(types.menu.help);
+    },
+    [types.menu.about](context) {
+      context.commit(types.menu.about);
     },
     [types.messages.post](context, payload) {
       context.commit(types.messages.post, payload);
@@ -60,9 +70,6 @@ export default new Vuex.Store({
     },
     [types.player.position](context, payload) {
       context.commit(types.player.position, payload);
-    },
-    ["count"](context) {
-      context.commit("count");
     }
   },
   modules: {}

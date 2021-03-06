@@ -1,6 +1,6 @@
 <script>
 import store from "./../store/index.js";
-import types from "./../enums/types.js";
+import types from "./../consts/types.js";
 
 export default {
   name: "Chatbar",
@@ -19,10 +19,17 @@ export default {
 };
 </script>
 
+<style>
+.overflow-y-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+</style>
+
 <template>
-  <div class="position-relative overflow-scroll w-25" id="chat-scroll">
+  <div class="position-relative overflow-y-scroll w-25" id="chat-scroll">
     <div
-      class="position-absolute d-flex flex-column pt-3 pe-3  fs-tiny text-light"
+      class="position-absolute d-flex flex-column pt-3 pe-3 fs-tiny text-light"
     >
       <div v-for="message in messages" :key="message.id">
         <div

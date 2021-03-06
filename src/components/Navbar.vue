@@ -1,11 +1,11 @@
 <script>
-import types from "./../enums/types.js";
+import types from "./../consts/types.js";
 import { mapActions } from "vuex";
 
 export default {
   name: "Narbar",
   methods: {
-    ...mapActions([types.menu.home, types.menu.inventory])
+    ...mapActions([types.menu.home, types.menu.about, types.menu.help])
   }
 };
 </script>
@@ -28,9 +28,14 @@ export default {
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a @click="menu_home" class="nav-link">Home</a>
-          <a @click="menu_inventory" class="nav-link">About</a>
-          <a @click="menu_inventory" class="nav-link">Project</a>
-          <a @click="menu_inventory" class="nav-link">Help</a>
+          <a @click="menu_about" class="nav-link">About</a>
+          <a
+            class="nav-link"
+            href="https://github.com/AroneSusau/pure-paradise-server"
+            target="_blank"
+            >Project</a
+          >
+          <a @click="menu_help" class="nav-link">Help</a>
         </div>
       </div>
     </div>

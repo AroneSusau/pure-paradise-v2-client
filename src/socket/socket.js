@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 
-import types from "./../enums/types.js";
+import types from "./../consts/types.js";
 import store from "./../store/index.js";
 
 const prod = "https://pure-paradise-v2.herokuapp.com";
@@ -26,8 +26,6 @@ socket.on("client:command", response => {
   if (response.player) {
     store.dispatch(types.player.position, response.player.coords.local);
   }
-
-  console.dir(response);
 });
 
 export default socket;

@@ -1,6 +1,7 @@
 const Menu = Object.freeze({
   HOME: 1,
-  INVENTORY: 2
+  ABOUT: 2,
+  HELP: 3
 });
 
 export default Menu;
