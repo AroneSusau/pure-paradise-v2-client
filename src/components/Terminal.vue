@@ -1,5 +1,5 @@
 <script>
-import types from "../enums/types.js";
+import types from "../consts/types.js";
 import store from "../store/index.js";
 import socket from "./../socket/socket.js";
 
@@ -43,12 +43,12 @@ export default {
           v-model="command"
           @keypress.enter="update"
           type="text"
-          class="form-control text-white bg-transparent border-secondary"
+          class="form-control text-dark bg-light border-dark"
           aria-label="Username"
           aria-describedby="basic-addon1"
           placeholder="Please enter a command.."
         />
-        <button @click="update" class="btn btn-outline-secondary" type="button">
+        <button @click="update" class="btn btn-secondary" type="button">
           Enter
         </button>
       </div>

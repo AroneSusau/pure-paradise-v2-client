@@ -1,8 +1,10 @@
 const types = Object.freeze({
   menu: {
     home: "menu_home",
-    inventory: "menu_inventory"
+    about: "menu_about",
+    help: "menu_help"
   },
+  started: "started",
   messages: {
     post: "messages_post"
   },

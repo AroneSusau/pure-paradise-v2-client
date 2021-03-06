@@ -1,12 +1,13 @@
 <script>
 import Navbar from "./components/Navbar.vue";
 import Chatbar from "./components/Chatbar.vue";
+import Welcome from "./components/Welcome.vue";
 import Map from "./components/Map.vue";
 import Stats from "./components/Stats.vue";
 import Terminal from "./components/Terminal.vue";
 import Footer from "./components/Footer.vue";
 
-import Menu from "./enums/constants.js";
+import Menu from "./consts/constants.js";
 import store from "./store/index.js";
 
 export default {
@@ -17,11 +18,14 @@ export default {
     Map,
     Stats,
     Terminal,
-    Footer
+    Footer,
+    Welcome
   },
   computed: {
     home: () => store.state.menu === Menu.HOME,
-    inventory: () => store.state.menu === Menu.INVENTORY
+    about: () => store.state.menu === Menu.ABOUT,
+    help: () => store.state.menu === Menu.help,
+    started: () => store.state.started
   }
 };
 </script>
@@ -70,6 +74,26 @@ html {
 .slide-in {
   animation: 1s slide-right;
 }
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #78879659 #212529;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #212529;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #78879659;
+  border-radius: 20px;
+}
 </style>
 
 <template>
@@ -78,7 +102,7 @@ html {
     id="app"
   >
     <Navbar />
-    <div class="d-flex my-3 flex-grow-1 flex-column">
+    <div v-if="started && home" class="d-flex my-3 flex-grow-1 flex-column">
       <div
         class="d-flex flex-grow-1 border-top border-bottom border-light-blue"
       >
@@ -89,8 +113,11 @@ html {
         </div>
       </div>
       <div class="py-5">
-        <Terminal v-if="home" />
+        <Terminal />
       </div>
+    </div>
+    <div v-else>
+      <Welcome v-if="!started && home" />
     </div>
     <Footer />
   </div>

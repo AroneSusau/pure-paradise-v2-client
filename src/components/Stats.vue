@@ -25,7 +25,7 @@ export default {
         <a href="#" class="link-secondary fs-tiny me-3">Weapons</a>
         <a href="#" class="link-secondary fs-tiny me-3">Armours</a>
       </div>
-      <div class="w-100 h-75 position-relative overflow-scroll">
+      <div class="w-100 h-75 position-relative overflow-y-scroll">
         <table class="position-absolute table-dark w-100 fs-tiny">
           <caption class="d-none">
             Inventory List
@@ -103,8 +103,8 @@ export default {
           <div
             class="progress-bar bg-info"
             role="progressbar"
-            :style="`width: ${count}%`"
-            :aria-valuenow="count"
+            :style="`width: 100%`"
+            :aria-valuenow="100"
             aria-valuemin="0"
             aria-valuemax="100"
           ></div>
@@ -117,8 +117,8 @@ export default {
           <div
             class="progress-bar bg-warning"
             role="progressbar"
-            :style="`width: ${count}%`"
-            :aria-valuenow="count"
+            :style="`width: 100%`"
+            :aria-valuenow="100"
             aria-valuemin="0"
             aria-valuemax="100"
           ></div>
@@ -131,8 +131,8 @@ export default {
           <div
             class="progress-bar bg-danger"
             role="progressbar"
-            :style="`width: ${count}%`"
-            :aria-valuenow="count"
+            :style="`width: 100%`"
+            :aria-valuenow="100"
             aria-valuemin="0"
             aria-valuemax="100"
           ></div>
