@@ -12,7 +12,7 @@ export default {
 
 <template>
   <nav class="navbar navbar-expand-lg h-auto navbar-dark bg-dark">
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
       <a class="navbar-brand">Pure Paradise v2.0</a>
       <button
         class="navbar-toggler"
