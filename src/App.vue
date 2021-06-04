@@ -24,7 +24,7 @@ export default {
   computed: {
     home: () => store.state.menu === Menu.HOME,
     about: () => store.state.menu === Menu.ABOUT,
-    help: () => store.state.menu === Menu.help,
+    help: () => store.state.menu === Menu.HELP,
     started: () => store.state.started
   }
 };
@@ -116,6 +116,19 @@ html {
         <Terminal />
       </div>
     </div>
+    
+    <div v-if="about" class="d-flex my-3 flex-grow-1 flex-column">
+      <div>
+        <h1>Help</h1>
+      </div>
+    </div>
+
+    <div v-if="help" class="d-flex my-3 flex-grow-1 flex-column">
+      <div>
+        <h1>Help</h1>
+      </div>
+    </div>
+
     <div v-else>
       <Welcome v-if="!started && home" />
     </div>
