@@ -8,7 +8,7 @@ const dev = "http://localhost:3000";
 
 const socket = io(process.env.NODE_ENV === "production" ? prod : dev);
 
-socket.on("client:command", response => {
+socket.on("client:error", response => {
   if (response.general) {
     store.dispatch(types.messages.post, {
       timestamp: Date.now(),
