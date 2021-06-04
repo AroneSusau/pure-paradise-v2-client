@@ -27,10 +27,10 @@ export default new Vuex.Store({
       state.started = state;
     },
     [types.menu.about](state) {
-      state.menu = Menu.about;
+      state.menu = Menu.ABOUT;
     },
     [types.menu.help](state) {
-      state.menu = Menu.help;
+      state.menu = Menu.HELP;
     },
     [types.messages.post](state, payload) {
       if (payload.timestamp && payload.content) {
