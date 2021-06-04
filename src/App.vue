@@ -179,10 +179,9 @@ html {
         <div class="mt-3 w-50 text-gray text-gray">
           <p>
             The aim of the game is to visit each of the four territories
-            Venmark, Tirera, Silvos and Pure Paradise and complete a quests at
-            each location. Each quest will provide you with a set of choices to
-            make and the outcome of those choices will dictate the ending you
-            recieve!
+            Venmark, Tirera, Silvos and Pure Paradise and complete the local
+            quest. Each quest will provide you with a set of choices to make and
+            the outcome of those choices will dictate the ending you recieve!
           </p>
           <p>
             To Active a quest, simply walk over the quest tile denoted as
