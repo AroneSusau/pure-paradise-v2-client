@@ -8,7 +8,7 @@ const dev = "http://localhost:3000";
 
 const socket = io(process.env.NODE_ENV === "production" ? prod : dev);
 
-socket.on("client:error", response => {
+socket.on("client:command", response => {
   if (response.general) {
     store.dispatch(types.messages.post, {
       timestamp: Date.now(),
@@ -18,6 +18,7 @@ socket.on("client:error", response => {
   }
 
   if (response.map) {
+
     store.dispatch(types.map.update, {
       raw: response.map.raw
     });
@@ -29,3 +30,4 @@ socket.on("client:error", response => {
 });
 
 export default socket;
+ 

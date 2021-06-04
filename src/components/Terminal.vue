@@ -29,7 +29,7 @@ export default {
         });
       }
 
-      socket.emit("client:movement:w", this.output);
+      socket.emit("client:command", this.output);
     }
   }
 };
