@@ -132,7 +132,7 @@ html {
       >
         <h1 class="w-50">About</h1>
         <div class="mt-3 w-50 text-gray text-gray">
-          <p>Hello Adventures!</p>
+          <p>Hello Adventurers!</p>
           <p>
             This section will cover the background information regarding the
             origin of this project. If you'd like to learn about how to play the
