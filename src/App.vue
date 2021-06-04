@@ -164,7 +164,7 @@ html {
             Otherwise if you would like to reach out to me, please feel free to
             shoot me a message on
             <a href="https://www.linkedin.com/in/arone-susau/" target="_blank"
-              >Linkedin</a
+              >LinkedIn</a
             >!
           </p>
         </div>
