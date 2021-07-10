@@ -1,18 +1,21 @@
 <script>
-import store from "../store";
-// import store from "./../store/index.js";
+import store from "../store"
 
 export default {
   name: "Stats",
   computed: {
     count: () => store.state.count
   }
-};
+}
 </script>
 
 <style>
 .hover-light:hover {
   color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.grabber {
+  cursor: pointer !important;
 }
 </style>
 
@@ -21,9 +24,9 @@ export default {
     <div class="flex-grow-1 w-100 mb-4 border-bottom border-light-blue">
       <p class="fs-6 mb-1 text-secondary">Inventory</p>
       <div class="mb-3">
-        <a href="#" class="link-secondary fs-tiny me-3">Consumables</a>
-        <a href="#" class="link-secondary fs-tiny me-3">Weapons</a>
-        <a href="#" class="link-secondary fs-tiny me-3">Armours</a>
+        <a class="link-secondary grabber fs-tiny me-3">Consumables</a>
+        <a class="link-secondary grabber fs-tiny me-3">Weapons</a>
+        <a class="link-secondary grabber fs-tiny me-3">Armours</a>
       </div>
       <div class="w-100 h-75 position-relative overflow-y-scroll">
         <table class="position-absolute table-dark w-100 fs-tiny">
@@ -99,7 +102,7 @@ export default {
     <div class="w-100 d-flex flex-column">
       <div class="container-fluid p-0">
         <p class="fs-tiny m-0 text-light my-1">Thirst</p>
-        <div class="progress" style="height: 7px;">
+        <div class="progress" style="height: 7px">
           <div
             class="progress-bar bg-info"
             role="progressbar"
@@ -113,7 +116,7 @@ export default {
 
       <div class="container-fluid p-0">
         <p class="fs-tiny m-0 text-light my-1 mt-2">Hunger</p>
-        <div class="progress" style="height: 7px;">
+        <div class="progress" style="height: 7px">
           <div
             class="progress-bar bg-warning"
             role="progressbar"
@@ -127,7 +130,7 @@ export default {
 
       <div class="container-fluid p-0">
         <p class="fs-tiny m-0 text-light my-1 mt-2">Health</p>
-        <div class="progress" style="height: 7px;">
+        <div class="progress" style="height: 7px">
           <div
             class="progress-bar bg-danger"
             role="progressbar"

@@ -1,22 +1,22 @@
 <script>
-import store from "./../store/index.js";
-import types from "./../consts/types.js";
+import store from "./../store/index.js"
+import types from "./../consts/types.js"
 
 export default {
   name: "Chatbar",
   data() {
     return {
       types
-    };
+    }
   },
   computed: {
     messages: () => store.state.messages
   },
   updated() {
-    const scroll = document.querySelector("#chat-scroll");
-    scroll.scrollTop = scroll.scrollHeight;
+    const scroll = document.querySelector("#chat-scroll")
+    scroll.scrollTop = scroll.scrollHeight
   }
-};
+}
 </script>
 
 <style>

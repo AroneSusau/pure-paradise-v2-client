@@ -17,11 +17,12 @@ const types = Object.freeze({
     }
   },
   map: {
-    update: "map_update"
+    update: "map_update",
+    other: "other_player"
   },
   player: {
     position: "player_position"
   }
-});
+})
 
-export default types;
+export default types

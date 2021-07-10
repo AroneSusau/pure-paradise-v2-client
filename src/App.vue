@@ -1,14 +1,14 @@
 <script>
-import Navbar from "./components/Navbar.vue";
-import Chatbar from "./components/Chatbar.vue";
-import Welcome from "./components/Welcome.vue";
-import Map from "./components/Map.vue";
-import Stats from "./components/Stats.vue";
-import Terminal from "./components/Terminal.vue";
-import Footer from "./components/Footer.vue";
+import Navbar from "./components/Navbar.vue"
+import Chatbar from "./components/Chatbar.vue"
+import Welcome from "./components/Welcome.vue"
+import Map from "./components/Map.vue"
+import Stats from "./components/Stats.vue"
+import Terminal from "./components/Terminal.vue"
+import Footer from "./components/Footer.vue"
 
-import Menu from "./consts/constants.js";
-import store from "./store/index.js";
+import Menu from "./consts/constants.js"
+import store from "./store/index.js"
 
 export default {
   name: "App",
@@ -27,7 +27,7 @@ export default {
     help: () => store.state.menu === Menu.HELP,
     started: () => store.state.started
   }
-};
+}
 </script>
 
 <style>
@@ -139,7 +139,7 @@ html {
             game, please visit the help section above.
           </p>
           <p>
-            The project was originally created as part of my RMIT Associates
+            This project was originally created as part of my RMIT Associates
             Degree first year major assignment for the course Introduction to
             Programming.
           </p>
@@ -179,9 +179,12 @@ html {
         <div class="mt-3 w-50 text-gray text-gray">
           <p>
             The aim of the game is to visit each of the four territories
-            Venmark, Tirera, Silvos and Pure Paradise and complete the local
-            quest. Each quest will provide you with a set of choices to make and
-            the outcome of those choices will dictate the ending you recieve!
+            {{/* eslint-disable-next-line */}}
+            Venmark, Tirera, Silvos and Pure Paradise and complete each 
+            {{/* eslint-disable-next-line */}}
+            locations quest. Each quest will provide you with a set of choices 
+            to make and the outcome of those choices will dictate the ending you
+            recieve!
           </p>
           <p>
             To Active a quest, simply walk over the quest tile denoted as

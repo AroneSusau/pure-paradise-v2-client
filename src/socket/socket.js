@@ -1,33 +1,43 @@
-import io from "socket.io-client";
+import io from "socket.io-client"
+import routes from "../consts/routes"
+import types from "../consts/types"
+import store from "../store"
 
-import types from "./../consts/types.js";
-import store from "./../store/index.js";
+const prod = "https://pure-paradise-v2.herokuapp.com"
+const dev = "http://localhost:3000"
 
-const prod = "https://pure-paradise-v2.herokuapp.com";
-const dev = "http://localhost:3000";
+const socket = io(process.env.NODE_ENV === "production" ? prod : dev)
 
-const socket = io(process.env.NODE_ENV === "production" ? prod : dev);
+// TODO: Remove later
+// socket.onAny((...args) => {
+//   console.log("******IGNORE******")
+//   console.dir(args)
+//   console.log("******IGNORE******")
+// })
 
-socket.on("client:command", response => {
-  if (response.general) {
-    store.dispatch(types.messages.post, {
-      timestamp: Date.now(),
-      content: response.general.text,
-      origin: types.origin.system
-    });
-  }
+socket.on(routes.error, args => {
+  store.dispatch(types.messages.post, {
+    timestamp: Date.now(),
+    content: args,
+    origin: types.origin.system
+  })
+})
 
-  if (response.map) {
+socket.on(routes.client.connection.join, args => {
+  console.log(args)
 
-    store.dispatch(types.map.update, {
-      raw: response.map.raw
-    });
-  }
+  store.dispatch(types.messages.post, {
+    timestamp: Date.now(),
+    content: args.message,
+    origin: types.origin.system
+  })
 
-  if (response.player) {
-    store.dispatch(types.player.position, response.player.coords.local);
-  }
-});
+  store.dispatch(types.map.update, args)
+  store.dispatch(types.player.position, args.local.y * 20 + args.local.x)
+})
 
-export default socket;
- 
+socket.on(routes.client.connection.leave, args => {
+  console.log(args)
+})
+
+export default socket

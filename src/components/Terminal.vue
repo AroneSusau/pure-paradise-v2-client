@@ -1,7 +1,7 @@
 <script>
-import types from "../consts/types.js";
-import store from "../store/index.js";
-import socket from "./../socket/socket.js";
+import types from "../consts/types.js"
+import store from "../store/index.js"
+import socket from "./../socket/socket.js"
 
 export default {
   name: "Terminal",
@@ -9,12 +9,12 @@ export default {
     return {
       output: "",
       command: ""
-    };
+    }
   },
   methods: {
     update() {
-      this.output = this.command;
-      this.command = "";
+      this.output = this.command
+      this.command = ""
 
       if (
         this.output.toLowerCase() != "w" &&
@@ -26,13 +26,13 @@ export default {
           timestamp: Date.now(),
           content: this.output,
           origin: types.origin.user
-        });
+        })
       }
 
-      socket.emit("client:command", this.output);
+      socket.emit("client:command", this.output)
     }
   }
-};
+}
 </script>
 
 <template>

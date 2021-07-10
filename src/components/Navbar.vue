@@ -1,13 +1,13 @@
 <script>
-import types from "./../consts/types.js";
-import { mapActions } from "vuex";
+import types from "./../consts/types.js"
+import { mapActions } from "vuex"
 
 export default {
   name: "Narbar",
   methods: {
     ...mapActions([types.menu.home, types.menu.about, types.menu.help])
   }
-};
+}
 </script>
 
 <template>

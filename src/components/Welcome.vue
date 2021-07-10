@@ -1,7 +1,8 @@
 <script>
-import store from "./../store/index.js";
-import types from "./../consts/types.js";
-import socket from "./../socket/socket.js";
+import store from "./../store/index.js"
+import types from "./../consts/types.js"
+import routes from "./../consts/routes.js"
+import socket from "./../socket/socket.js"
 
 export default {
   name: "Welcome",
@@ -9,18 +10,18 @@ export default {
     return {
       output: "",
       command: ""
-    };
+    }
   },
   methods: {
     start() {
-      this.output = this.command;
-      this.command = "";
+      this.output = this.command
+      this.command = ""
 
-      store.dispatch(types.started, true);
-      socket.emit("client:command", this.output);
+      store.dispatch(types.started, true)
+      socket.emit(routes.client.connection.join, this.output)
     }
   }
-};
+}
 </script>
 
 <style scoped>

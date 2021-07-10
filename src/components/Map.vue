@@ -1,5 +1,5 @@
 <script>
-import store from "./../store/index.js";
+import store from "./../store/index.js"
 
 export default {
   name: "Map",
@@ -7,7 +7,7 @@ export default {
     map: () => store.state.map,
     playerIndex: () => store.state.player.position
   }
-};
+}
 </script>
 
 <style>
