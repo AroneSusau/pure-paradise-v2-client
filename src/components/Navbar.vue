@@ -1,11 +1,11 @@
 <script>
-import types from "./../consts/types.js"
-import { mapActions } from "vuex"
-
 export default {
   name: "Narbar",
+  data: () => window.store,
   methods: {
-    ...mapActions([types.menu.home, types.menu.about, types.menu.help])
+    home() { window.store.setMenuHome() },
+    help() { window.store.setMenuHelp() },
+    about() { window.store.setMenuAbout() },
   }
 }
 </script>
@@ -27,15 +27,10 @@ export default {
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a @click="menu_home" class="nav-link">Home</a>
-          <a @click="menu_about" class="nav-link">About</a>
-          <a
-            class="nav-link"
-            href="https://github.com/AroneSusau/pure-paradise-server"
-            target="_blank"
-            >Project</a
-          >
-          <a @click="menu_help" class="nav-link">Help</a>
+          <a @click="home" class="nav-link">Home</a>
+          <a @click="about" class="nav-link">About</a>
+          <a class="nav-link" href="https://github.com/AroneSusau/pure-paradise-server" target="_blank" >Project</a>
+          <a @click="help" class="nav-link">Help</a>
         </div>
       </div>
     </div>

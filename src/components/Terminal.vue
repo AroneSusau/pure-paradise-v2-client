@@ -1,6 +1,4 @@
 <script>
-import types from "../consts/types.js"
-import store from "../store/index.js"
 import socket from "./../socket/socket.js"
 
 export default {
@@ -8,7 +6,8 @@ export default {
   data() {
     return {
       output: "",
-      command: ""
+      command: "",
+      store: window.store
     }
   },
   methods: {
@@ -16,19 +15,7 @@ export default {
       this.output = this.command
       this.command = ""
 
-      if (
-        this.output.toLowerCase() != "w" &&
-        this.output.toLowerCase() != "a" &&
-        this.output.toLowerCase() != "s" &&
-        this.output.toLowerCase() != "d"
-      ) {
-        store.dispatch(types.messages.post, {
-          timestamp: Date.now(),
-          content: this.output,
-          origin: types.origin.user
-        })
-      }
-
+      window.store.postCommandMessage(this.output)
       socket.emit("client:command", this.output)
     }
   }

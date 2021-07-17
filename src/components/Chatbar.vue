@@ -1,16 +1,16 @@
 <script>
-import store from "./../store/index.js"
 import types from "./../consts/types.js"
 
 export default {
   name: "Chatbar",
   data() {
     return {
-      types
+      types,
+      store: window.store,
     }
   },
   computed: {
-    messages: () => store.state.messages
+    messages: () => window.store.messages
   },
   updated() {
     const scroll = document.querySelector("#chat-scroll")

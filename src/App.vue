@@ -8,7 +8,6 @@ import Terminal from "./components/Terminal.vue"
 import Footer from "./components/Footer.vue"
 
 import Menu from "./consts/constants.js"
-import store from "./store/index.js"
 
 export default {
   name: "App",
@@ -21,11 +20,11 @@ export default {
     Footer,
     Welcome
   },
+  data: () => window.store,
   computed: {
-    home: () => store.state.menu === Menu.HOME,
-    about: () => store.state.menu === Menu.ABOUT,
-    help: () => store.state.menu === Menu.HELP,
-    started: () => store.state.started
+    home: () => window.store.isMenu(Menu.HOME),
+    about: () => window.store.isMenu(Menu.ABOUT),
+    help: () => window.store.isMenu(Menu.HELP),
   }
 }
 </script>

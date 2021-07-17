@@ -1,6 +1,4 @@
 <script>
-import store from "./../store/index.js"
-import types from "./../consts/types.js"
 import routes from "./../consts/routes.js"
 import socket from "./../socket/socket.js"
 
@@ -9,7 +7,8 @@ export default {
   data() {
     return {
       output: "",
-      command: ""
+      command: "",
+      store: window.store,
     }
   },
   methods: {
@@ -17,7 +16,7 @@ export default {
       this.output = this.command
       this.command = ""
 
-      store.dispatch(types.started, true)
+      window.store.setStarted()
       socket.emit(routes.client.connection.join, this.output)
     }
   }

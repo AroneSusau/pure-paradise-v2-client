@@ -1,11 +1,7 @@
 <script>
-import store from "../store"
-
 export default {
   name: "Stats",
-  computed: {
-    count: () => store.state.count
-  }
+  data: () => window.store,
 }
 </script>
 
@@ -83,7 +79,6 @@ export default {
         </table>
       </div>
     </div>
-
     <div class="w-100 text-light fs-tiny">
       <div class="row">
         <p class="col">Attack <span class="text-secondary">30</span></p>
@@ -95,7 +90,7 @@ export default {
         <p class="col">Money: <span class="text-secondary">$150</span></p>
         <p class="col">Location: <span class="text-secondary">Teria</span></p>
         <p class="col">Quests: <span class="text-secondary">1/4</span></p>
-        <p class="col">Players: <span class="text-secondary">3</span></p>
+        <p class="col">Players: <span class="text-secondary">{{playerCount}}</span></p>
       </div>
     </div>
 
@@ -106,7 +101,7 @@ export default {
           <div
             class="progress-bar bg-info"
             role="progressbar"
-            :style="`width: 100%`"
+            :style="`width: ${ thirst }%`"
             :aria-valuenow="100"
             aria-valuemin="0"
             aria-valuemax="100"
@@ -120,7 +115,7 @@ export default {
           <div
             class="progress-bar bg-warning"
             role="progressbar"
-            :style="`width: 100%`"
+            :style="`width: ${ hunger }%`"
             :aria-valuenow="100"
             aria-valuemin="0"
             aria-valuemax="100"
@@ -134,7 +129,7 @@ export default {
           <div
             class="progress-bar bg-danger"
             role="progressbar"
-            :style="`width: 100%`"
+            :style="`width: ${ health }%`"
             :aria-valuenow="100"
             aria-valuemin="0"
             aria-valuemax="100"

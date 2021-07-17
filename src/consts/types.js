@@ -21,7 +21,9 @@ const types = Object.freeze({
     other: "other_player"
   },
   player: {
-    position: "player_position"
+    position: "player_position",
+    stats: "player_stats",
+    playerCount: "player_count",
   }
 })
 

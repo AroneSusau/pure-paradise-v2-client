@@ -1,7 +1,5 @@
 import io from "socket.io-client"
 import routes from "../consts/routes"
-import types from "../consts/types"
-import store from "../store"
 
 const prod = "https://pure-paradise-v2.herokuapp.com"
 const dev = "http://localhost:3000"
@@ -16,24 +14,31 @@ const socket = io(process.env.NODE_ENV === "production" ? prod : dev)
 // })
 
 socket.on(routes.error, args => {
-  store.dispatch(types.messages.post, {
-    timestamp: Date.now(),
-    content: args,
-    origin: types.origin.system
-  })
+  window.store.postSystemMessage(args)
 })
 
 socket.on(routes.client.connection.join, args => {
   console.log(args)
 
-  store.dispatch(types.messages.post, {
-    timestamp: Date.now(),
-    content: args.message,
-    origin: types.origin.system
-  })
+  window.store.postSystemMessage(args.message)
 
-  store.dispatch(types.map.update, args)
-  store.dispatch(types.player.position, args.local.y * 20 + args.local.x)
+  window.store.setMap(args.raw)
+  
+  window.store.setLocalPosition(args.local)
+  window.store.setGlobalPosition(args.global)
+  
+  window.store.setHealth(args.health)
+  window.store.setHunger(args.hunger)
+  window.store.setThirst(args.thirst)
+
+  window.store.setPlayerCount(args.playersCount)
+})
+
+socket.on(routes.client.connection.player, args => {
+  console.log(args)
+
+  window.store.postSystemMessage(args.message)
+  window.store.setPlayerCount(args.playersCount)
 })
 
 socket.on(routes.client.connection.leave, args => {

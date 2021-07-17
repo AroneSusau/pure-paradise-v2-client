@@ -1,11 +1,9 @@
 <script>
-import store from "./../store/index.js"
-
 export default {
   name: "Map",
+  data: () => window.store,
   computed: {
-    map: () => store.state.map,
-    playerIndex: () => store.state.player.position
+    playerIndex: () => window.store.getLocalIndex()
   }
 }
 </script>
