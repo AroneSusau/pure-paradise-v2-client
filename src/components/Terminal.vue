@@ -1,5 +1,5 @@
 <script>
-import socket from "./../socket/socket.js"
+import parser from "./../socket/socket.js"
 
 export default {
   name: "Terminal",
@@ -15,8 +15,7 @@ export default {
       this.output = this.command
       this.command = ""
 
-      window.store.postCommandMessage(this.output)
-      socket.emit("client:command", this.output)
+      parser.send(this.output)
     }
   }
 }

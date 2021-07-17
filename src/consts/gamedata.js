@@ -15,14 +15,18 @@ export default {
     global: { x: 0, y: 0 },
   },
 
+  context: 0,
+
   // World Stats
   playerCount: 0,
+  players: new Map(),
   messages: [],
   map: [],
   
   // Client Stats
   started: false,
   menu: Menu.HOME,
+  debug: true,
 
   // Getters
   getLocalIndex() {
@@ -58,6 +62,10 @@ export default {
     this.position.global = payload
   },
 
+  setContext(payload) {
+    this.context = payload
+  },
+
   // Setters World
   setPlayerCount(payload) {
     this.playerCount = payload
@@ -84,12 +92,31 @@ export default {
     this.menu = Menu.ABOUT
   },
 
-  // Actions
+  // Actions World
+  addPlayer(payload) {
+    this.players.set(payload.id, payload)
+    this.playerCount++
+  },
+
+  removePlayer(payload) {
+    this.players.delete(payload.id)
+    this.playerCount--
+  },
+
+  // Actions Client
   postSystemMessage(payload) {
     this.messages.push({
       timestamp: format.prettyDateTime(Date.now()),
       content: payload,
       origin: types.origin.system
+    })
+  },
+
+  postErrorMessage(payload) {
+    this.messages.push({
+      timestamp: format.prettyDateTime(Date.now()),
+      content: payload,
+      origin: types.origin.error
     })
   },
 

@@ -1,6 +1,5 @@
 <script>
-import routes from "./../consts/routes.js"
-import socket from "./../socket/socket.js"
+import parser from "./../socket/socket.js"
 
 export default {
   name: "Welcome",
@@ -17,7 +16,7 @@ export default {
       this.command = ""
 
       window.store.setStarted()
-      socket.emit(routes.client.connection.join, this.output)
+      parser.start(this.output)
     }
   }
 }

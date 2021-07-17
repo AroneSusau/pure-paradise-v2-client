@@ -11,9 +11,11 @@ const types = Object.freeze({
   origin: {
     user: "origin_user",
     system: "origin_system",
+    error: 'origin_error',
     tags: {
       origin_user: "User",
-      origin_system: "System"
+      origin_system: "System",
+      origin_error: "Error"
     }
   },
   map: {

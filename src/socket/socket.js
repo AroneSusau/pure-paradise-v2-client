@@ -1,25 +1,25 @@
 import io from "socket.io-client"
 import routes from "../consts/routes"
+import { Parser } from "./Parser"
 
 const prod = "https://pure-paradise-v2.herokuapp.com"
 const dev = "http://localhost:3000"
 
 const socket = io(process.env.NODE_ENV === "production" ? prod : dev)
 
-// TODO: Remove later
-// socket.onAny((...args) => {
-//   console.log("******IGNORE******")
-//   console.dir(args)
-//   console.log("******IGNORE******")
-// })
+// Debug Routes
+socket.onAny((...args) => {
+  if (window.store.debug) {
+    console.dir(args)
+  }
+})
 
+// World Routes
 socket.on(routes.error, args => {
   window.store.postSystemMessage(args)
 })
 
-socket.on(routes.client.connection.join, args => {
-  console.log(args)
-
+socket.on(routes.connection.join, args => {
   window.store.postSystemMessage(args.message)
 
   window.store.setMap(args.raw)
@@ -34,15 +34,30 @@ socket.on(routes.client.connection.join, args => {
   window.store.setPlayerCount(args.playersCount)
 })
 
-socket.on(routes.client.connection.player, args => {
-  console.log(args)
-
+socket.on(routes.connection.player, args => {
   window.store.postSystemMessage(args.message)
   window.store.setPlayerCount(args.playersCount)
 })
 
-socket.on(routes.client.connection.leave, args => {
+socket.on(routes.connection.leave, args => {
   console.log(args)
 })
 
-export default socket
+// Movement Routes
+socket.on(routes.movement.w, args => {
+  window.store.setLocalPosition(args.local)
+})
+
+socket.on(routes.movement.a, args => {
+  window.store.setLocalPosition(args.local)
+})
+
+socket.on(routes.movement.s, args => {
+  window.store.setLocalPosition(args.local)
+})
+
+socket.on(routes.movement.d, args => {
+  window.store.setLocalPosition(args.local)
+})
+
+export default new Parser(socket)

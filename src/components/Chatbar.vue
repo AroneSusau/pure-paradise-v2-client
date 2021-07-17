@@ -35,7 +35,8 @@ export default {
         <div
           class="slide-in"
           v-bind:class="{
-            'text-blue': message.origin === types.origin.user
+            'text-blue': message.origin === types.origin.user,
+            'text-danger': message.origin === types.origin.error,
           }"
         >
           <p class="mb-1" v-html="message.content"></p>
